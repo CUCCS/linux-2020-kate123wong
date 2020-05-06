@@ -5,9 +5,9 @@ before_install:
 
 script:
   - ls -l
-  - bash test.sh
+  - bash examples/test.sh
   - ls -l  
-  - cat file 
+  - cat examples/file 
 
 notifications:
    email:
