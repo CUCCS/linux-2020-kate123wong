@@ -6,9 +6,8 @@ before_install:
 script:
   - ls -l
   - bash test.sh
-  - ls -l 
-  - pwd 
-  - file 
+  - ls -l  
+  - cat file 
 
 notifications:
    email:
