@@ -7,7 +7,7 @@ script:
   - ls -l
   - bash examples/test.sh
   - ls -l  
-  - cat examples/file 
+  - cat file 
 
 notifications:
    email:
