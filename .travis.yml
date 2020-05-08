@@ -6,46 +6,46 @@ before_install:
 
 # -wget -P tasks/  "https://c4pr1c3.gitee.io/linuxsysadmin/exp/chap0x04/web_log.tsv.7z"
   - sudo apt install p7zip-full
-  - 7z x chap0x04/tasks/web_log.tsv.7z  -otasks 
+  - 7z x chap0x04/tasks/web_log.tsv.7z  -ochap0x04/tasks 
 script:
   # show help information
   - bash chap0x04/tasks/imageProcessing.sh -h
   - ls chap0x04/image/test1
   # compress jpeg images
-  - bash chap0x04/tasks/imageProcessing.sh -f  image/test1 -q 50
+  - bash chap0x04/tasks/imageProcessing.sh -f  chap0x04/image/test1 -q 50
   - ls chap0x04/image/test1
   # resize jpeg/png/sug images
-  - bash chap0x04/tasks/imageProcessing.sh -f image/test1 -r 40
+  - bash chap0x04/tasks/imageProcessing.sh -f chap0x04/image/test1 -r 40
   - ls chap0x04/image/test1
   # add watermark into images
-  - bash chap0x04/tasks/imageProcessing.sh -f image/test1 -t "kate123wong"
+  - bash chap0x04/tasks/imageProcessing.sh -f chap0x04/image/test1 -t "kate123wong"
   - ls chap0x04/image/test1
   # add prefix in to images
-  - bash chap0x04/tasks/imageProcessing.sh -f image/test1 -p "cuc"
+  - bash chap0x04/tasks/imageProcessing.sh -f chap0x04/image/test1 -p "cuc"
   - ls chap0x04/image/test1
   # add suffix in to images
-  - bash chap0x04/tasks/imageProcessing.sh -f image/test1 -s "information_security"
+  - bash chap0x04/tasks/imageProcessing.sh -f chap0x04/image/test1 -s "information_security"
   - ls chap0x04/image/test1
   # change png/svg to jpg
-  - bash chap0x04/tasks/imageProcessing.sh -f image/test1 -c
+  - bash chap0x04/tasks/imageProcessing.sh -f chap0x04/image/test1 -c
 
 
   - bash chap0x04/tasks/task2.sh -h
-  - bash chap0x04/tasks/task2.sh -a tasks/worldcupplayerinfo.tsv
-  - bash chap0x04/tasks/task2.sh -b tasks/worldcupplayerinfo.tsv
-  - bash chap0x04/tasks/task2.sh -d tasks/worldcupplayerinfo.tsv
-  - bash chap0x04/tasks/task2.sh -c tasks/worldcupplayerinfo.tsv
-  - bash chap0x04/tasks/task2.sh -i tasks/worldcupplayerinfo.tsv
+  - bash chap0x04/tasks/task2.sh -a chap0x04/tasks/worldcupplayerinfo.tsv
+  - bash chap0x04/tasks/task2.sh -b chap0x04/tasks/worldcupplayerinfo.tsv
+  - bash chap0x04/tasks/task2.sh -d chap0x04/tasks/worldcupplayerinfo.tsv
+  - bash chap0x04/tasks/task2.sh -c chap0x04/tasks/worldcupplayerinfo.tsv
+  - bash chap0x04/tasks/task2.sh -i chap0x04/tasks/worldcupplayerinfo.tsv
 
  
   - bash chap0x04/tasks/wblog.sh -h
-  - bash chap0x04/tasks/wblog.sh -a tasks/web_log.tsv
-  - bash chap0x04/tasks/wblog.sh -b tasks/web_log.tsv
-  - bash chap0x04/tasks/wblog.sh -c tasks/web_log.tsv
-  - bash chap0x04/tasks/wblog.sh -d tasks/web_log.tsv
-  - bash chap0x04/tasks/wblog.sh -e tasks/web_log.tsv
-  - bash chap0x04/tasks/wblog.sh  -u tasks/web_log.tsv "/ksc.html"
-  - bash chap0x04/tasks/wblog.sh  -u tasks/web_log.tsv "/"
+  - bash chap0x04/tasks/wblog.sh -a chap0x04/tasks/web_log.tsv
+  - bash chap0x04/tasks/wblog.sh -b chap0x04/tasks/web_log.tsv
+  - bash chap0x04/tasks/wblog.sh -c chap0x04/tasks/web_log.tsv
+  - bash chap0x04/tasks/wblog.sh -d chap0x04/tasks/web_log.tsv
+  - bash chap0x04/tasks/wblog.sh -e chap0x04/tasks/web_log.tsv
+  - bash chap0x04/tasks/wblog.sh  -u chap0x04/tasks/web_log.tsv "/ksc.html"
+  - bash chap0x04/tasks/wblog.sh  -u chap0x04/tasks/web_log.tsv "/"
 
 
 after script:
