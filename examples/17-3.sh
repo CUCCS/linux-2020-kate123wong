@@ -1,4 +1,4 @@
-#!usr/bin/env bash
+#!/usr/bin/env bash
 # 16进制表示的 ascii 码: 7c，英文术语：vertical bar，Shell编程里的管道操作符
 printf '%s' '|' | xxd  
 

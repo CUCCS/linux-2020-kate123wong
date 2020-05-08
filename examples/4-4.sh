@@ -1,4 +1,4 @@
-#!usr/bin/env bash
+#!/usr/bin/env bash
 BIRTHDATE="Jan 1 2000"   # 填入一个字符串
 Presents=10    # 填入一个整数
 BIRTHDAY="Saturday"      # 使用命令替换方法赋值

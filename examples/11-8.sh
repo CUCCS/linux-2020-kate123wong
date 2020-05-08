@@ -1,4 +1,4 @@
-#!usr/bin/env bash
+#!/usr/bin/env bash
 # prints out 0,1,2,3,4
 
 COUNT=0

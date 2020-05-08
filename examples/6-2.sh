@@ -1,4 +1,4 @@
-#!sur/bin/env bash
+#!/sur/bin/env bash
 echo $3   # --> results with: banana
 
 BIG=$5

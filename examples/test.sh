@@ -1,4 +1,4 @@
-#!usr/bin/env bash
+#!/usr/bin/env bash
 
 for file in examples/*.sh;do
     if [[ $file =~ $0 ]];then

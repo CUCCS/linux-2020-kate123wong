@@ -1,4 +1,4 @@
-#!usr/bin/env bash
+#!/usr/bin/env bash
 # 利用I/O重定向机制
 
 # 清空一个文件（文件大小变为0）

@@ -1,4 +1,4 @@
-#!usr/bin/env bash
+#!/usr/bin/env bash
 STRING="this is a string"
 echo ${#STRING}            # 16
 

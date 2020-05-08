@@ -1,4 +1,4 @@
-#!ussr/bin/env bash
+#!/usr/bin/env bash
 STRING="to be or not to be"
 echo "${STRING[@]//be/eat}"  # to eat or not to eat
 

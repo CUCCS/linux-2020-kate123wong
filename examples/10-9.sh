@@ -1,4 +1,4 @@
-#!usr/bin/env bash
+#!/usr/bin/env bash
 mycase=1
 case $mycase in
     1) echo "You selected bash";;

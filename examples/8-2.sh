@@ -1,4 +1,4 @@
-#!usr/bin/env bash
+#!/usr/bin/env bash
 # 进阶算术运算请使用命令行工具 bc
 
 # 计算 4 * arctangent(1) ，计算结果保留 10 位有效数字

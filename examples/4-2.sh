@@ -1,4 +1,4 @@
-#!usr/bin/env bash
+#!/usr/bin/env bash
 
 MyFirstLetters=ABC
 echo "The first 10 letters in the alphabet are: ${MyFirstLetters}DEFGHIJ"

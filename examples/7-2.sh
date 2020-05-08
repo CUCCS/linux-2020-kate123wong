@@ -1,4 +1,4 @@
-#!usr/bin/env bash
+#!/usr/bin/env bash
 
 #查看当前 Bash 的 declare 支持的参数
 # help declare

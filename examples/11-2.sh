@@ -1,4 +1,4 @@
-#!usr/bin/env bash
+#!/usr/bin/env bash
 # loop on array member
 NAMES=(Joe Jenny Sara Tony)
 for N in "${NAMES[@]}" ; do
