@@ -16,7 +16,7 @@ optional arguments:
   -p		add prefix in filename(only png/jpeg/jpg/svg/bmp)
   -s		add suffix in filename(only png/jpeg/jpg/svg/bmp)
   -c		convert png/svg to jpg
-  -h		show this help message and exit
+  --help		show this help message and exit
 
 
 END_EOF
@@ -147,7 +147,7 @@ while getopts "f:q:r:t:p:s:ch" opt;do
     c)
       is_convert=true
       ;;
-    h|?)
+    help|?)
       usage "$0" 
       exit 0
       ;;

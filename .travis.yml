@@ -6,58 +6,58 @@ before_install:
 
 # -wget -P tasks/  "https://c4pr1c3.gitee.io/linuxsysadmin/exp/chap0x04/web_log.tsv.7z"
   - sudo apt install p7zip-full
-  - 7z x tasks/web_log.tsv.7z  -otasks 
+  - 7z x chap0x04/tasks/web_log.tsv.7z  -otasks 
 script:
   # show help information
-  - bash tasks/imageProcessing.sh -h
-  - ls image/test1
+  - bash chap0x04/tasks/imageProcessing.sh -h
+  - ls chap0x04/image/test1
   # compress jpeg images
-  - bash tasks/imageProcessing.sh -f  image/test1 -q 50
-  - ls image/test1
+  - bash chap0x04/tasks/imageProcessing.sh -f  image/test1 -q 50
+  - ls chap0x04/image/test1
   # resize jpeg/png/sug images
-  - bash tasks/imageProcessing.sh -f image/test1 -r 40
-  - ls image/test1
+  - bash chap0x04/tasks/imageProcessing.sh -f image/test1 -r 40
+  - ls chap0x04/image/test1
   # add watermark into images
-  - bash tasks/imageProcessing.sh -f image/test1 -t "kate123wong"
-  - ls image/test1
+  - bash chap0x04/tasks/imageProcessing.sh -f image/test1 -t "kate123wong"
+  - ls chap0x04/image/test1
   # add prefix in to images
-  - bash tasks/imageProcessing.sh -f image/test1 -p "cuc"
-  - ls image/test1
+  - bash chap0x04/tasks/imageProcessing.sh -f image/test1 -p "cuc"
+  - ls chap0x04/image/test1
   # add suffix in to images
-  - bash tasks/imageProcessing.sh -f image/test1 -s "information_security"
-  - ls image/test1
+  - bash chap0x04/tasks/imageProcessing.sh -f image/test1 -s "information_security"
+  - ls chap0x04/image/test1
   # change png/svg to jpg
-  - bash tasks/imageProcessing.sh -f image/test1 -c
+  - bash chap0x04/tasks/imageProcessing.sh -f image/test1 -c
 
 
-  - bash tasks/task2.sh -h
-  - bash tasks/task2.sh -a tasks/worldcupplayerinfo.tsv
-  - bash tasks/task2.sh -b tasks/worldcupplayerinfo.tsv
-  - bash tasks/task2.sh -d tasks/worldcupplayerinfo.tsv
-  - bash tasks/task2.sh -c tasks/worldcupplayerinfo.tsv
-  - bash tasks/task2.sh -i tasks/worldcupplayerinfo.tsv
+  - bash chap0x04/tasks/task2.sh -h
+  - bash chap0x04/tasks/task2.sh -a tasks/worldcupplayerinfo.tsv
+  - bash chap0x04/tasks/task2.sh -b tasks/worldcupplayerinfo.tsv
+  - bash chap0x04/tasks/task2.sh -d tasks/worldcupplayerinfo.tsv
+  - bash chap0x04/tasks/task2.sh -c tasks/worldcupplayerinfo.tsv
+  - bash chap0x04/tasks/task2.sh -i tasks/worldcupplayerinfo.tsv
 
  
-  - bash tasks/wblog.sh -h
-  - bash tasks/wblog.sh -a tasks/web_log.tsv
-  - bash tasks/wblog.sh -b tasks/web_log.tsv
-  - bash tasks/wblog.sh -c tasks/web_log.tsv
-  - bash tasks/wblog.sh -d tasks/web_log.tsv
-  - bash tasks/wblog.sh -e tasks/web_log.tsv
-  - bash tasks/wblog.sh  -u tasks/web_log.tsv "/ksc.html"
-  - bash tasks/wblog.sh  -u tasks/web_log.tsv "/"
+  - bash chap0x04/tasks/wblog.sh -h
+  - bash chap0x04/tasks/wblog.sh -a tasks/web_log.tsv
+  - bash chap0x04/tasks/wblog.sh -b tasks/web_log.tsv
+  - bash chap0x04/tasks/wblog.sh -c tasks/web_log.tsv
+  - bash chap0x04/tasks/wblog.sh -d tasks/web_log.tsv
+  - bash chap0x04/tasks/wblog.sh -e tasks/web_log.tsv
+  - bash chap0x04/tasks/wblog.sh  -u tasks/web_log.tsv "/ksc.html"
+  - bash chap0x04/tasks/wblog.sh  -u tasks/web_log.tsv "/"
 
 
 after script:
 
-  - shellcheck tasks/imageProcessing.sh
-  - shellcheck tasks/tasks2.sh
-  - shellcheck tasks/wblog.sh
+  - shellcheck chap0x04/tasks/imageProcessing.sh
+  - shellcheck chap0x04/tasks/tasks2.sh
+  - shellcheck chap0x04/tasks/wblog.sh
 
  # this is some examples about shell language that used in the class
- # - ls examples -l
- # - bash examples/test.sh
- # - ls examples -l  
+ # - ls chap0x04/examples -l
+ # - bash chap0x04/examples/test.sh
+ # - ls chap0x04/examples -l  
  # - cat examples/file 
 
 notifications:

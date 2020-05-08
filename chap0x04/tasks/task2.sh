@@ -96,7 +96,7 @@ optional arguments:
   -b		count the number and percentage of players on different positions
   -d		show the longest and shorest name of players
   -c		show the oldest and youngest players
-  -h		show this help information and exit
+  --help		show this help information and exit
 
 for examples:
   bash $1 -i		show information about worldcupplayerinfo.tsv
@@ -121,7 +121,7 @@ while getopts "i:a:b:c:d:h" opt;do
     c)
       age "$OPTARG"
       ;;
-    h|?)
+    help|?)
       usage "$0"
       ;;
   esac  

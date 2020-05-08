@@ -67,7 +67,7 @@ optional arguments:
   -d            state codes statistics
   -e            top 10 url with state codes 4xx
   -u            specify url and display top 100 hosts
-  -h            show this help message and exit
+  --help            show this help message and exit
 
 for example:
   bash $1 -u "/ksc.html"	display top 100 access hosts
@@ -100,7 +100,7 @@ while getopts "a:b:c:d:e:u:h" opt; do
     u) 
       top "$OPTARG"
       ;;
-    h|?)
+    help|?)
       usage "$0"
       exit 0
       ;;
