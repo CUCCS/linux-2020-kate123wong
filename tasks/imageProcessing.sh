@@ -1,4 +1,4 @@
-#!usr/bin/env bash
+#!bin/bash
 
 function usage()
 {
@@ -157,7 +157,7 @@ done
 
 if [[ $is_directory ]];then
   files=$(ls "$path")
-  d="${path}";
+  d="${path}/";
   for f in $files;do
     tmp="${f##*/}"
     bk=$tmp
