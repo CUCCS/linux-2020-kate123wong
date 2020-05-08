@@ -103,7 +103,7 @@ function watermark()
 function clean()
 {
   if [[ "$bk"  != "$tmp" ]];then
-    rm "$1$bk"
+    if [[ "$1$bk" ]];then rm "$1$bk"; fi
     bk="$tmp"
   fi
 }

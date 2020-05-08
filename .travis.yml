@@ -24,8 +24,16 @@ script:
   - ls image/test1
 
 
-  - shellcheck tasks/imageProcessing.sh
+  - bash tasks/task2.sh -h
+  - bash tasks/task2.sh -a
+  - bash tasks/task2.sh -b
+  - bash tasks/task2.sh -d
+  - bash tasks/task2.sh -e
 
+after script:
+
+  - shellcheck tasks/imageProcessing.sh
+  - shellcheck tasks/tasks2.sh
 
 
 
