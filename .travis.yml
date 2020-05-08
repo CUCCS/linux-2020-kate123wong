@@ -6,7 +6,7 @@ before_install:
 
 # -wget -P tasks/  "https://c4pr1c3.gitee.io/linuxsysadmin/exp/chap0x04/web_log.tsv.7z"
   - sudo apt install p7zip-full
-  - 7z x tasks/web_log.tsv.7z  task/ 
+  - 7z tasks/web_log.tsv.7z  task 
 script:
   # show help information
   - bash tasks/imageProcessing.sh -h
