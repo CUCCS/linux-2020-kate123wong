@@ -93,7 +93,7 @@ function watermark()
     h="$(identify -format "%h" "$2$1")"
     w="$(identify -format "%w" "$2$1")"
     s=$(( h < w ? h/10:w/10))
-    convert "$2$1" -opintsize "$s" -fill yellow -gravity center -draw "text 10,10 '$text'" "${2}marked_$1"
+    convert "$2$1" -pointsize "$s" -fill yellow -gravity center -draw "text 10,10 '$text'" "${2}marked_$1"
     tmp="marked_$1"
   fi
 
