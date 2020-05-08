@@ -4,7 +4,7 @@ function information()
 {
   awk '
   {if(NR==1){print "total fields: "NF; print} }
-  END{ print "total records: "NR-1 }' worldcupplayerinfo.tsv
+  END{ print "total records: "NR-1 }' $1
 }
 
 
@@ -26,7 +26,7 @@ function num()
   printf("[<20]\t%d\t%.5f\n",a,a/sum);
   printf("[20,30]\t%d\t%.5f\n",b,b/sum);
   printf("[>30]\t%d\t%.5f\n",c,c/sum);
-  }' worldcupplayerinfo.tsv
+  }' $1
 }
 
 
@@ -37,7 +37,7 @@ function position()
   NR > 1 {pos[$5]++; sum++;}
   END{
     for (p in pos){printf("%s:\t%d\t%.5f\n",p,pos[p],pos[p]/sum);}
-  }' worldcupplayerinfo.tsv
+  }' $1
   
 }
 
@@ -58,7 +58,7 @@ function name()
       if(names[n]==min){print "shortest name: "n;}
     }
 
-  }' worldcupplayerinfo.tsv
+  }' $1
 
 }
 
@@ -76,7 +76,7 @@ function age()
       if(names[n]==min){print "smallest age:"names[n]"\t""name: "n"\t";}
     }
 
-  }' worldcupplayerinfo.tsv
+  }' $1
 }
 
 
@@ -104,22 +104,22 @@ for examples:
 END_EOF
 }
 
-while getopts "iabcdeh" opt;do
+while getopts ":i:a:b:c:d:eh" opt;do
   case $opt in
     i)
-      information
+      information $OPTARG
     ;;
     a)
-      num
+      num $OPTARG
       ;;
     b)
-      position
+      position $OPTARG
       ;;
     d)
-      name
+      name $OPTARG
       ;;
     e)
-      age
+      age $OPTARG
       ;;
     h|?)
       usage "$0"
