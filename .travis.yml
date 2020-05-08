@@ -3,6 +3,7 @@ language: bash
 before_install:
   - sudo apt-get update && sudo apt-get install -y shellcheck
   - sudo apt-get install imagemagick
+  - wget "https://github.com/kate123wong/linux-2020-kate123wong/tree/chap0x04/tasks/worldcupplayerinfo.tsv"
 script:
   # show help information
   - bash tasks/imageProcessing.sh -h
