@@ -1,0 +1,34 @@
+language: bash
+
+before_install:
+  - sudo apt-get update && sudo apt-get install -y shellcheck
+  - sudo apt-get install imagemagick
+script:
+  # show help information
+  - bash tasks/imageProcessing.sh -h
+  - ls image/test1
+  # compress jpeg images
+  - bash tasks/imageProcessing.sh -f chap0x04/image/test1 -q 50
+  - ls image/test1
+  # resize jpeg/png/sug images
+  - bash tasks/imageProcessing.sh -f chap0x04/image/test1 -r 40
+  - ls image/test1
+  # add watermark into images
+  - bash tasks/imageProcessing.sh -f chap0x04/image/test1 -t "kate123wong"
+  - ls image/test1
+  # add prefix in to images
+  - bash tasks/imageProcessing.sh -f chap0x04/image/test1 -p "cuc"
+  - ls image/test1
+  # add suffix in to images
+  - bash tasks/imageProcessing.sh -f chap0x04/image/test1 -s "information_security"
+  - ls image/test1
+
+ # this is some examples about shell language that used in the class
+ # - ls examples -l
+ # - bash examples/test.sh
+ # - ls examples -l  
+ # - cat examples/file 
+
+notifications:
+   email:
+      on_success: never
