@@ -26,11 +26,11 @@ script:
 
 
   - bash tasks/task2.sh -h
-  - bash tasks/task2.sh -a
-  - bash tasks/task2.sh -b
-  - bash tasks/task2.sh -d
-  - bash tasks/task2.sh -e
-
+  - bash tasks/task2.sh -a tasks/worldcupplayerinfo.tsv
+  - bash tasks/task2.sh -b tasks/worldcupplayerinfo.tsv
+  - bash tasks/task2.sh -d tasks/worldcupplayerinfo.tsv
+  - bash tasks/task2.sh -e tasks/worldcupplayerinfo.tsv
+  - bash tasks/task2.sh -i tasks/worldcupplayerinfo.tsv
 after script:
 
   - shellcheck tasks/imageProcessing.sh
