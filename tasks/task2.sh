@@ -104,7 +104,7 @@ for examples:
 END_EOF
 }
 
-while getopts ":i:a:b:c:d:eh" opt;do
+while getopts "i:a:b:c:d:h" opt;do
   case $opt in
     i)
       information "$OPTARG"

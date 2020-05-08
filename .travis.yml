@@ -3,7 +3,10 @@ language: bash
 before_install:
   - sudo apt-get update && sudo apt-get install -y shellcheck
   - sudo apt-get install imagemagick
-  - wget "https://github.com/kate123wong/linux-2020-kate123wong/tree/chap0x04/tasks/worldcupplayerinfo.tsv"
+
+# -wget -P tasks/  "https://c4pr1c3.gitee.io/linuxsysadmin/exp/chap0x04/web_log.tsv.7z"
+  - sudo apt install p7zip-full
+  - 7z x tasks/web_log.tsv.7z  tasks/web_log.tsv 
 script:
   # show help information
   - bash tasks/imageProcessing.sh -h
@@ -23,27 +26,33 @@ script:
   # add suffix in to images
   - bash tasks/imageProcessing.sh -f image/test1 -s "information_security"
   - ls image/test1
+  # change png/svg to jpg
+  - bash tasks/imageProcessing.sh -f image/test1 -c
 
 
   - bash tasks/task2.sh -h
   - bash tasks/task2.sh -a tasks/worldcupplayerinfo.tsv
   - bash tasks/task2.sh -b tasks/worldcupplayerinfo.tsv
   - bash tasks/task2.sh -d tasks/worldcupplayerinfo.tsv
-  - bash tasks/task2.sh -e tasks/worldcupplayerinfo.tsv
+  - bash tasks/task2.sh -c tasks/worldcupplayerinfo.tsv
   - bash tasks/task2.sh -i tasks/worldcupplayerinfo.tsv
+
+ 
+  - bash tasks/wblog.sh -h
+  - bash tasks/wblog.sh -a tasks/web_log.tsv
+  - bash tasks/wblog.sh -b tasks/web_log.tsv
+  - bash tasks/wblog.sh -c tasks/web_log.tsv
+  - bash tasks/wblog.sh -d tasks/web_log.tsv
+  - bash tasks/wblog.sh -e tasks/web_log.tsv
+  - bash tasks/wblog.sh  -u tasks/web_log.tsv "/ksc.html"
+  - bash tasks/wblog.sh  -u tasks/web_log.tsv "/"
+
+
 after script:
 
   - shellcheck tasks/imageProcessing.sh
   - shellcheck tasks/tasks2.sh
-
-
-
-
-
-
-
-
-
+  - shellcheck tasks/wblog.sh
 
  # this is some examples about shell language that used in the class
  # - ls examples -l

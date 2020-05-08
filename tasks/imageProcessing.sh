@@ -110,7 +110,7 @@ function clean()
 
 
 #params
-while getopts ":f:q:r:t:p:s:ch" opt;do
+while getopts "f:q:r:t:p:s:ch" opt;do
   case $opt in
     f)
       path="$OPTARG"
