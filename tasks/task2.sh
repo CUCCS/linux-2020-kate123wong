@@ -4,7 +4,7 @@ function information()
 {
   awk '
   {if(NR==1){print "total fields: "NF; print} }
-  END{ print "total records: "NR-1 }' $1
+  END{ print "total records: "NR-1 }' "$1"
 }
 
 
@@ -26,7 +26,7 @@ function num()
   printf("[<20]\t%d\t%.5f\n",a,a/sum);
   printf("[20,30]\t%d\t%.5f\n",b,b/sum);
   printf("[>30]\t%d\t%.5f\n",c,c/sum);
-  }' $1
+  }' "$1"
 }
 
 
@@ -37,7 +37,7 @@ function position()
   NR > 1 {pos[$5]++; sum++;}
   END{
     for (p in pos){printf("%s:\t%d\t%.5f\n",p,pos[p],pos[p]/sum);}
-  }' $1
+  }' "$1"
   
 }
 
@@ -49,7 +49,7 @@ function name()
   NR > 1 {
     l=length($9);
     names[$9]=l;
-    if(l>maxn){max=l;}
+    if(l>max){max=l;}
     if(l<min){min=l;}  
   }
   END{
@@ -58,7 +58,7 @@ function name()
       if(names[n]==min){print "shortest name: "n;}
     }
 
-  }' $1
+  }' "$1"
 
 }
 
@@ -66,17 +66,17 @@ function age()
 {
   awk -F '\t' 'BEGIN{min = 9999; max = 0;}
   NR > 1 {
-    names[$9]=$6;
-    if($6>maxn){max=$6;}
+    name[$9]=$6;
+    if($6>max){max=$6;}
     if($6<min){min=$6;}  
   }
   END{
-    for(n in names){
-      if(names[n]==max){print "largest age:"names[n]"\t""name: "n"\t";}
-      if(names[n]==min){print "smallest age:"names[n]"\t""name: "n"\t";}
+    for(k in name){
+      if(name[k]==max){printf("largest age:\t%d\tname:\t%s\n",name[k],k);}
+      if(name[k]==min){printf("smallest age:\t%d\tname:\t%s\n",name[k],k);}
     }
 
-  }' $1
+  }' "$1"
 }
 
 
@@ -95,7 +95,7 @@ optional arguments:
   -a		count the number and percentage of players in different age ranges
   -b		count the number and percentage of players on different positions
   -d		show the longest and shorest name of players
-  -e		show the oldest and youngest players
+  -c		show the oldest and youngest players
   -h		show this help information and exit
 
 for examples:
@@ -107,19 +107,19 @@ END_EOF
 while getopts ":i:a:b:c:d:eh" opt;do
   case $opt in
     i)
-      information $OPTARG
+      information "$OPTARG"
     ;;
     a)
-      num $OPTARG
+      num "$OPTARG"
       ;;
     b)
-      position $OPTARG
+      position "$OPTARG"
       ;;
     d)
-      name $OPTARG
+      name "$OPTARG"
       ;;
-    e)
-      age $OPTARG
+    c)
+      age "$OPTARG"
       ;;
     h|?)
       usage "$0"

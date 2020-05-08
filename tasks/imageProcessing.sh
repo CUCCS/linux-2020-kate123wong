@@ -74,10 +74,10 @@ function prefix_suffix()
   format="$(identify -format "%m" "$2$1")"
   if [[ $format == "JPEG" ]] || [[ $format == "PNG" ]] ||  [[ $format == "SVG" ]] || [[ $format == "BMP3" ]];then
     if [[ $is_prefix ]];then
-      mv "$2$1" "$2$prefix$1"
+      cp "$2$1" "$2$prefix$1"
       tmp="$prefix$1"
     else
-      mv "$2$1" "$2${1%.*}$suffix.${1##*.}"
+      cp "$2$1" "$2${1%.*}$suffix.${1##*.}"
       tmp="${1%.*}${suffix}.${1##*.}" 
     fi
   fi
@@ -103,7 +103,7 @@ function watermark()
 function clean()
 {
   if [[ "$bk"  != "$tmp" ]];then
-    if [[ "$1$bk" ]];then rm "$1$bk"; fi
+    rm "$1$bk"
     bk="$tmp"
   fi
 }
