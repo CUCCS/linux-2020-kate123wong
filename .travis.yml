@@ -23,6 +23,19 @@ script:
   - bash tasks/imageProcessing.sh -f image/test1 -s "information_security"
   - ls image/test1
 
+
+  - shellcheck tasks/imageProcessing.sh
+
+
+
+
+
+
+
+
+
+
+
  # this is some examples about shell language that used in the class
  # - ls examples -l
  # - bash examples/test.sh
