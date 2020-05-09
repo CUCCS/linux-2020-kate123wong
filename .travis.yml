@@ -39,13 +39,13 @@ script:
 
  
   - bash chap0x04/tasks/wblog.sh -h
-  - bash chap0x04/tasks/wblog.sh -a chap0x04/tasks/web_log.tsv
-  - bash chap0x04/tasks/wblog.sh -b chap0x04/tasks/web_log.tsv
-  - bash chap0x04/tasks/wblog.sh -c chap0x04/tasks/web_log.tsv
-  - bash chap0x04/tasks/wblog.sh -d chap0x04/tasks/web_log.tsv
-  - bash chap0x04/tasks/wblog.sh -e chap0x04/tasks/web_log.tsv
-  - bash chap0x04/tasks/wblog.sh  -u chap0x04/tasks/web_log.tsv "/ksc.html"
-  - bash chap0x04/tasks/wblog.sh  -u chap0x04/tasks/web_log.tsv "/"
+  - bash chap0x04/tasks/wblog.sh -a 
+  - bash chap0x04/tasks/wblog.sh -b 
+  - bash chap0x04/tasks/wblog.sh -c
+  - bash chap0x04/tasks/wblog.sh -d 
+  - bash chap0x04/tasks/wblog.sh -e 
+  - bash chap0x04/tasks/wblog.sh  -u  "/ksc.html"
+  - bash chap0x04/tasks/wblog.sh  -u  "/"
 
 
 after script:

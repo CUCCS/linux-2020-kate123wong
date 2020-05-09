@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-
-
+filename="chap0x04/tasks/web_log.tsv"
+#filename="web_log.tsv"
 function top_hosts() {
   awk -F '\t' 'NR>1 { hosts[$1]++; } 
   END{ for(k in hosts){print hosts[k]"\t"k"\t\n";}
-  }' "$1" | sort -g -k1 -r | head -100
+  }' "${filename}" | sort -g -k1 -r | head -100
 }
  
 
@@ -12,19 +12,19 @@ function top_ips() {
   awk -F '\t' 'NR>1
   { if(match($1, /^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/) || match($1,/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/)){hosts[$1]++;} }
   END{ for(k in hosts){print hosts[k]"\t"k"\t\n";}
- }' "$1" | sort -g -k1 -r | head -100
+ }' "${filename}" | sort -g -k1 -r | head -100
 }
 
 
 function top_urls() {
   awk -F '\t' 'NR>1 { urls[$5]++;} 
   END{ for(k in urls){print urls[k]"\t"k"\t\n";}
-  }' "$1" | sort -g -k1 -r | head -100
+  }' "${filename}" | sort -g -k1 -r | head -100
 }
  
 
 function states() {
-  awk -F '\t' 'NR>1 { response[$6]++;} END{ for(k in response){ p=100*response[k]/(NR-1); printf("%s\t%.6f%%\t",k,p); print response[k]"\t";} }' "$1"
+  awk -F '\t' 'NR>1 { response[$6]++;} END{ for(k in response){ p=100*response[k]/(NR-1); printf("%s\t%.6f%%\t",k,p); print response[k]"\t";} }' "$filename"
 }
 
 
@@ -36,7 +36,7 @@ function code() {
       print k1, urls[k1][k2], k2;
     }
   }
-}' "$1" | tee >(sort -k1,1r -k2,2gr | head -10) >(sort -k1,1 -k2,2gr | head -10) > /dev/null)"
+}' "${filename}" | tee >(sort -k1,1r -k2,2gr | head -10) >(sort -k1,1 -k2,2gr | head -10) > /dev/null)"
   a=0
   for t in $tmp;do
     a=$((a+1))
@@ -50,8 +50,16 @@ function code() {
 
 
 function top() {
-  VAR=$2
-  awk -F '\t' 'NR>1{ if($5==V){hosts[$1]++;} } END{ for(k in hosts){print hosts[k]"\t"k"\t\n";} }' V="$VAR" "$1" | sort -g -k1 -r | head -100
+  VAR=$1
+  awk -F '\t' '
+  NR>1&&$5=="'"${VAR}"'"{ 
+      hosts[$1]++;
+  } 
+  END{ 
+    for(k in hosts){
+       print hosts[k]"\t"k"\t\n";
+    }
+   }' "${filename}" | sort -nr -k 2 | head -n -100
 }
 
 # help information
