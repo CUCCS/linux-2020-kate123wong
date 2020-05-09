@@ -50,7 +50,7 @@ script:
 after script:
 
   - shellcheck chap0x04/tasks/imageProcessing.sh
-  - shellcheck chap0x04/tasks/tasks2.sh
+  - shellcheck chap0x04/tasks/task2.sh
   - shellcheck chap0x04/tasks/wblog.sh
 
  # this is some examples about shell language that used in the class
