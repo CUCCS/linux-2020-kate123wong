@@ -61,7 +61,7 @@ function top() {
     for(k in hosts){
        printf("%s\t%d\n",k,hosts[k])
     }
-   }' "${filename}" | sort -nr -k 2 | head -n -100
+   }' "${filename}" | sort -nr -k 2 | head -n 100
 }
 
 # help information

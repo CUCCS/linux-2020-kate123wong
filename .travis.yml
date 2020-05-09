@@ -35,7 +35,6 @@ script:
   - bash chap0x04/tasks/task2.sh -b chap0x04/tasks/worldcupplayerinfo.tsv
   - bash chap0x04/tasks/task2.sh -d chap0x04/tasks/worldcupplayerinfo.tsv
   - bash chap0x04/tasks/task2.sh -c chap0x04/tasks/worldcupplayerinfo.tsv
-  - bash chap0x04/tasks/task2.sh -i chap0x04/tasks/worldcupplayerinfo.tsv
 
  
   - bash chap0x04/tasks/wblog.sh -h
