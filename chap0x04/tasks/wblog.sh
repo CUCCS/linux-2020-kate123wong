@@ -9,10 +9,12 @@ function top_hosts() {
  
 
 function top_ips() {
-  awk -F '\t' 'NR>1
-  { if(match($1, /^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/) || match($1,/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/)){hosts[$1]++;} }
-  END{ for(k in hosts){print hosts[k]"\t"k"\t\n";}
- }' "${filename}" | sort -g -k1 -r | head -100
+  awk -F '\t' 'NR>1&&$1~/([0-9]{1,3}\.){3}[0-9]{1,3}/{
+     hostip[$1]++;
+  }
+  END{
+    for (k in hostip){printf("%s\t%d\n",k,hostip[k]);}
+ }' "${filename}" | sort -nr -k 2 | head -100
 }
 
 
@@ -57,7 +59,7 @@ function top() {
   } 
   END{ 
     for(k in hosts){
-       print hosts[k]"\t"k"\t\n";
+       printf("%s\t%d\n",k,hosts[k])
     }
    }' "${filename}" | sort -nr -k 2 | head -n -100
 }
@@ -85,25 +87,25 @@ END_EOF
 }
 
 #params
-while getopts "a:b:c:d:e:u:h" opt; do
+while getopts "abcdeu:h" opt; do
   case $opt in
     i) 
-      info "$OPTARG"
+      info 
       ;;
     a) 
-      top_hosts "$OPTARG"
+      top_hosts 
       ;;
     b)
-      top_ips "$OPTARG"
+      top_ips 
       ;;
     c)
-      top_urls  "$OPTARG"
+      top_urls  
       ;;
     d)
-      states  "$OPTARG"
+      states 
       ;;
     e) 
-      code  "$OPTARG"
+      code  
       ;;
     u) 
       top "$OPTARG"
