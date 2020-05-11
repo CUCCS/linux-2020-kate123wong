@@ -1,9 +1,15 @@
-### 实验环境准备
+### 实验目的
+
++ 练习shell编程
+
+### 实验环境
 
 + 系统：ubuntu 18.04
 + 虚拟机：`virtubox`
-+ 在ubuntu上配置git并用`ssh`连接到`github`
 
+### 实验准备
+
++ 在ubuntu上配置git并用`ssh`连接到`github`
 + 安装`ImageMagick`工具:`sudo apt install imagemagick` 
 + 安装解压7z的工具:`sudo apt install p7zip-full`
 
@@ -85,6 +91,18 @@
     - [x] 统计不同响应状态码的出现次数和对应百分比
     - [x] 分别统计不同4XX状态码对应的TOP 10 URL和对应出现的总次数
     - [x] 给定URL输出TOP 100访问来源主机
+
+### 实验代码
+
++ [task1](./tasks/imageProcessing.sh)
+
++ [task2](./tasks/task2.sh)
++ [task3](./tasks/wblog.sh)
+
+### 实验结果
+
++ 数据文件：[result_data.md](./result_data.md)
++ travis-ci.com在线测试结果：[travis-ci.com]( https://travis-ci.com/github/kate123wong/linux-2020-kate123wong/builds/164869188 )
 
 ### 参考文献
 
