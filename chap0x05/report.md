@@ -8,9 +8,6 @@
 + nginx version ：nginx1.14.0(Ubuntu)
 + verynginx
 
-## 实验目的
-
-
 
 ## 安装配置VeryNginx
 
