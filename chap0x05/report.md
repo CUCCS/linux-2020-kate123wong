@@ -517,7 +517,7 @@ sudo systemctl restart nginx
 
 + [how to install wordpress with LEMP on Ubuntu 18.04]( https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lemp-on-ubuntu-18-04 )
 + [How To Install Linux, Nginx, MySQL, PHP (LEMP stack) on Ubuntu 18.04]( https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-ubuntu-18-04 )
-+ [How To Install WordPress with LEMP on Ubuntu 18.04]( [https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lemp-on-ubuntu-18-04#step-1-%E2%80%94-creating-a-mysql-database-and-user-for-wordpress](https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lemp-on-ubuntu-18-04#step-1-—-creating-a-mysql-database-and-user-for-wordpress) )
++ [How To Install WordPress with LEMP on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lemp-on-ubuntu-18-04#step-1-—-creating-a-mysql-database-and-user-for-wordpress)
 + [how-to-setup-damn-vulnerable-web-app-lab-on-ubuntu-18-04-server]( https://kifarunix.com/how-to-setup-damn-vulnerable-web-app-lab-on-ubuntu-18-04-server/ )
 + [ https://www.virtualbox.org]( https://www.virtualbox.org/manual/ch08.html#vboxmanage-modifyvm )
 + [VirtualBox不同网卡的上网规则](blog.csdn.net/nsxqf/article/details/83543563)
