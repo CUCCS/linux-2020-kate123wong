@@ -24,7 +24,7 @@
   git clone https://github.com/alexazhou/VeryNginx.git
   
   # 安装python以及相应的依赖
-  sudo apt insatll python
+  sudo apt install python
   sudo apt install  libssl-dev libpcre3 libpcre3-dev build-essential
   sudo apt-get install zlib1g.dev
   
@@ -61,35 +61,13 @@
 
   ```shell
   sudo vim /opt/verynginx/openresty/nginx/conf/nginx.conf
-  # 将user从nginx修改为系统中的默认用户www-date
+  # 将user从nginx修改为系统中的默认用户www-data
   # 修改server为  :20002
   # :wq!
-  #修改权限，主目录权限给www-date
+  #修改权限，主目录权限给www-data
   sudo chown -R www-data.www-data /opt/verynginx/
   ```
 
-+ 遇到的问题：之前添加host-only网卡一直设置无效，尝试多种方法仍然无法有效设置。
-
-  + 解决方法：采用桥接网卡代替host-only+Nat，但要将桥接网卡的ip设置成静态分配的，以便主机每次都通过同一ip访问客机。
-
-    >#-----------------------------------------------------  补充知识 -------------------------------------------------------------
-    >
-    >| 如何访问     | host-only网卡 | Nat    | 桥接 |
-    >| ------------ | ------------- | ------ | ---- |
-    >| 主机访问客机 | 允许          | 不允许 | 允许 |
-    >| 客机访问主机 | 允许          | 允许   | 允许 |
-    >| 客机访问公网 | 不允许        | 允许   | 允许 |
-    >| 公网访问客机 | 不允许        | 不允许 | 允许 |
-    >
-    >该实验中，host-only作用是允许主机通过web访问客机的verynhinx服务，Nat网卡的作用是用来上网，即客机访问公网。桥接模式下，这两种功能都可以实现，故在无法配置host-only网卡的情况下，采用桥接模式作为替用方案。
-    >
-    >----------------------------------------------------------   补充知识     ----------------------------------------------------#
-
-    + 改变桥接网卡的ip为静态：
-
-    <img src="image\verynginx_netplan.PNG" style="zoom:75%;" />
-
-  
 
 ### 修改client的hosts文件
 
@@ -145,7 +123,7 @@
 
 ### WEB访问
 
-+ 通过web面板对verynginx进行配置，在浏览器访问`http:\vn.sec.cuc.edu.cn\verynginx\index.html:20002`。默认用户名和密码是`verynginx/verynginx`。登录之后就可以查看状态，并修改配置。
++ 通过web面板对verynginx进行配置，在浏览器访问`http:\vn.sec.cuc.edu.cn:20002\verynginx\index.html`。默认用户名和密码是`verynginx/verynginx`。登录之后就可以查看状态，并修改配置。
 
   使用域名登录成功截图：
 
@@ -189,7 +167,6 @@ FLUSH PRIVILEGES;
 
 # 查看user的认证方式
 SELECT user,authentication_string,plugin,host FROM mysql.user;
-
 ```
 
 ![](image\nginx_mysql_add_password.PNG)
@@ -203,7 +180,7 @@ sudo apt install php-fpm php-mysql
 
 #配置nginx使用php（文件名（nginx_php-fpm）随意）
 # 不直接修改defult文件，以便在需要恢复原始设置时可再次直接使用defult文件
-sudo nano /etc/nginx/sites-available/nginx_php-fpm
+sudo vim /etc/nginx/sites-available/nginx_php-fpm
 # 稍稍修改一下/etc/nginx/sites-enabled/default 中的内容，并添加到nginx_php-fpm文件中（见下面截图）
 
 #创建从服务器块配置文件到/etc/nginx/sites-enabled/目录的符号链接来启用新服务器块：
@@ -278,6 +255,7 @@ curl -LO https://wordpress.org/latest.tar.gz
 tar xzvf latest.tar.gz
 cp /tmp/wordpress/wp-config-sample.php /tmp/wordpress/wp-config.php
 sudo cp -a /tmp/wordpress/.  /var/www/html/wp.sec.cuc.edu.cn/
+sudo chown -R www-data:www-data /var/www/html/wp.sec.cuc.edu.cn/
 ```
 
 ### 修改client的hosts文件
@@ -303,7 +281,7 @@ sudo cp -a /tmp/wordpress/.  /var/www/html/wp.sec.cuc.edu.cn/
 ```shell
 git clone https://github.com/ethicalhack3r/DVWA /tmp/DVWA
 sudo rsync -avP /tmp/DVWA/ /var/www/html 
-sudo cp /var/www/html/config/config.inc.php.dist /var/www/html/config/config.inc.php/
+sudo cp /var/www/html/config/config.inc.php.dist /var/www/html/config/config.inc.php
 # 修改/var/www/html/config/config.inc.php/中的$_DVWA[ 'db_password' ] = '123456';
 ```
 
@@ -361,27 +339,28 @@ sudo systemctl restart nginx
 ###  基本要求
 
 + 在一台主机（虚拟机）上同时配置[Nginx](http://nginx.org/)[VeryNginx](https://github.com/alexazhou/VeryNginx)
+  
   + VeryNginx作为本次实验的Web App的反向代理服务器和WAF
   
 + PHP-FPM进程的反向代理配置在nginx服务器上，VeryNginx服务器不直接配置Web站点服务 
   
-    + 在verynginx中配置
-  
+    + 在verynginx中配置反向代理
+    
       + 配置matcher
-  
+    
         <img src="image\verynginx_daili.cogfig.PNG" style="zoom:75%;" />
-  
+    
       + 配置upstream和proxy
-  
+    
         <img src="image\verynginx_daili.cogfig_upstream.PNG" style="zoom:75%;" />
-  
+    
         
   
 + 使用[Wordpress](https://wordpress.org/)搭建的站点对外提供访问的地址为： http://wp.sec.cuc.edu.cn
 
 + 使用[Damn Vulnerable Web Application (DVWA)](http://www.dvwa.co.uk/)搭建的站点对外提供访问的地址为： http://dvwa.sec.cuc.edu.cn
 
-  + [配置文件](image\nginx_wordpress_dvwa_config.PNG)
+  + [nginx配置文件](image\nginx_wordpress_dvwa_config.PNG)
   + wordpress和dvwa搭建站点访问情况：
 
   <img src="image\nginx_wordpress_dvwa_opne_login.PNG" style="zoom:75%;" />
@@ -389,11 +368,153 @@ sudo systemctl restart nginx
 ### 安全加固要求
 
 - 使用IP地址方式均无法访问上述任意站点，并向访客展示自定义的**友好错误提示信息页面-1**
+
+  - 添加mater
+
+    ![](D:\0001Study\00212_linux\linux-2020-kate123wong\chap0x05\image\safe_ip_gegex.PNG)
+
+  - 添加response![](image\safe_ip_refuse.PNG)
+
+  - 添加filter
+
+    ![](image\safe_ip_filter.PNG)
+
+  - 结果（本地虚拟机出现故障（重装仍有问题），故后续操作是将远程他人主机后进行的操作，所以host-only的ip地址有所变化，但端口配置信息不变，不过，因为前面全都重新操作的缘故，导致剩余时间太少，部分实验没有成功）。
+
+    ![](image\yuancheng_wordpress_ip_failed.PNG)
+
+    ![](image\yuancheng_dvwa_ip_failed.PNG)
+
 - [Damn Vulnerable Web Application (DVWA)](http://www.dvwa.co.uk/)只允许白名单上的访客来源IP，其他来源的IP访问均向访客展示自定义的**友好错误提示信息页面-2**
+
+  - 添加matcher
+
+    ![dv_ip](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/dv_ip.PNG)
+
+  - 添加自定义response
+
+    ![dvwa_res](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/dvwa_res.PNG)
+
+  - 添加filter
+
+    ![dv_filter](image\dv_filter.PNG)
+
+  - 结果：失败
+
 - 在不升级Wordpress版本的情况下，通过定制[VeryNginx](https://github.com/alexazhou/VeryNginx)的访问控制策略规则，**热**修复[WordPress < 4.7.1 - Username Enumeration](https://www.exploit-db.com/exploits/41497/)
+
+  + 添加matcher
+
+    ![wp_mat](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/wp_mat.PNG)
+
+  + 添加filter
+
+    ![wp_filter](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/wp_filter.PNG)
+
+  + 结果：失败
+
 - 通过配置[VeryNginx](https://github.com/alexazhou/VeryNginx)的Filter规则实现对[Damn Vulnerable Web Application (DVWA)](http://www.dvwa.co.uk/)的SQL注入实验在低安全等级条件下进行防护
 
+  + 添加matcher
 
+    ![sql_matcher](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/sql_matcher.PNG)
+
+  + 添加自定义response
+
+    ![sql_response](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/sql_response.PNG)
+
+  + 添加filter
+
+    ![sql_filter](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/sql_filter.PNG)
+
+  + 结果：失败
+
+  ## VeryNginx配置要求
+
++ [VeryNginx](https://github.com/alexazhou/VeryNginx)的Web管理页面仅允许白名单上的访客来源IP，其他来源的IP访问均向访客展示自定义的**友好错误提示信息页面-3**
+
+  - 添加matcher
+
+    ![vn_white](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/vn_white.PNG)
+
+  - 添加自定义response
+
+    ![vn_res](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/vn_res.PNG)
+
+  - 添加filter
+
+    ![vn_filter](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/vn_filter.PNG)
+
+  - 结果：失败
+
++ 通过定制
+
+  VeryNginx
+
+  的访问控制策略规则实现：
+
+  - 限制DVWA站点的单IP访问速率为每秒请求数 < 50
+
+  - 限制Wordpress站点的单IP访问速率为每秒请求数 < 20
+
+  - 超过访问频率限制的请求直接返回自定义**错误提示信息页面-4**
+
+  - 禁止curl访问
+
+    - 添加自定义response
+
+      ![speed_resp](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/speed_resp.PNG)
+
+    + 添加频率限制
+
+    ![speed](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/speed.PNG)
+
+    - 结果
+
+
+    - 禁止curl访问
+
+      - 添加matcher
+
+        ![curl_mat](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/curl_mat.PNG)
+
+      - 添加filter
+
+        ![curl_filter](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/curl_filter.PNG)
+
+    
+
+### 问题
+
++ 遇到的问题：之前添加host-only网卡一直设置无效，尝试多种方法仍然无法有效设置。
+
+  + 尝试解决方法1：采用桥接网卡代替host-only+Nat，但要将桥接网卡的ip设置成静态分配的，以便主机每次都通过同一ip访问客机。
+
+    >#-----------------------------------------------------  补充知识 -------------------------------------------------------------
+    >
+    >| 如何访问     | host-only网卡 | Nat    | 桥接 |
+    >| ------------ | ------------- | ------ | ---- |
+    >| 主机访问客机 | 允许          | 不允许 | 允许 |
+    >| 客机访问主机 | 允许          | 允许   | 允许 |
+    >| 客机访问公网 | 不允许        | 允许   | 允许 |
+    >| 公网访问客机 | 不允许        | 不允许 | 允许 |
+    >
+    >该实验中，host-only作用是允许主机通过web访问客机的verynhinx服务，Nat网卡的作用是用来上网，即客机访问公网。桥接模式下，这两种功能都可以实现，故在无法配置host-only网卡的情况下，采用桥接模式作为替用方案。
+    >
+    >----------------------------------------------------------   补充知识     ----------------------------------------------------#
+
+    + 改变桥接网卡的ip为静态。
+
+      <img src="image\verynginx_netplan.PNG" style="zoom:75%;" />
+
+    + 该做法可以解决部分问题，但由于本实验要求配置反向代理服务器，并配置ip访问时不能直接访问。桥接模式下，主客机在同一局域网中，反向代理不生效，仍能通过ip访问。故此做法在反向代理的配置上不可行。
+
+  + 尝试解决方法2：卸载虚拟机，清除注册表后，重新安装host-only adapter。
+  
+    + 结果：仍未能解决
+  
+  + 尝试解决方法三：重新装机。（实验截止时期迫在眉睫，且手边没有可替代电子产品，所以最终没敢重装）。
+  + 方法四：远程他人电脑操作，导入虚拟机失败，所以之前全部重做，一系列故障后，导致后续实验时间太紧迫，安全加固的部分要求没有完成。
 
 ### 参考文献
 
