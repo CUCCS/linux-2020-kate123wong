@@ -220,7 +220,7 @@
 
 ### 实验文件
 
-+ 脚本：[dhcp.sh](scripts/dhcp/sh)
++ 脚本：[dhcp.sh](scripts/dhcp.sh)
 + 配置文件[vsftpd.conf](config/vsftpd.conf),[isc-dhcp-server](config/isc-dhcp-server),[01-netcfg.yaml](config/01-netcfg.yaml)
 
 ### 实验过程
