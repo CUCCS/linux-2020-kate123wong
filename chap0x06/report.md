@@ -155,7 +155,7 @@
 
   + 该账号继承匿名访问者对一个目录及其子目录的只读访问权。
 
-    该账户对host_only文件架有下载权限，无上传的权限
+    该账户对host_only文件夹下文件有下载权限，无上传的权限
 
     ![](images/vsftpd_have_pawd_only_read.PNG)
 
