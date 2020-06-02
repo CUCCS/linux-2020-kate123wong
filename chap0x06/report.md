@@ -57,7 +57,7 @@
 
 ### 实验结果
 
-![](images\免密ssh_loginin2.PNG)
+![](images/免密ssh_loginin2.PNG)
 
 ## FPD
 
@@ -141,11 +141,11 @@
 
   + 提供匿名访问
 
-    ![](\images\vsftpd_login_withoutpswd.PNG)
+    ![](images/vsftpd_login_withoutpswd.PNG)
 
   + 拥有一个目录及子文件的只读访问权限
 
-    ![](images\vsftpd_read_withoutpswd.PNG)
+    ![](images/vsftpd_read_withoutpswd.PNG)
 
 + 配置一个支持用户名和密码方式访问的账号，该账号继承匿名访问者所有权限，且拥有对另1个独立目录及其子目录完整读写权限
 
@@ -200,15 +200,15 @@
 
 在1台Linux上配置NFS服务，另1台电脑上配置NFS客户端挂载2个权限不同的共享目录，分别对应只读访问和读写访问权限；
 
-![](images\nfs_读写.PNG)
+![](images/nfs_读写.PNG)
 
 - 共享目录中文件、子目录的属主、权限信
 
-  ![](images\nfs权限参数.PNG)
+  ![](images/nfs权限参数.PNG)
 
 - 你通过NFS客户端在NFS共享目录中新建的目录、创建的文件的属主、权限信息
 
-  ![](\images\nfs权限参数_hosts.PNG)
+  ![](images/nfs权限参数_hosts.PNG)
 
 - 上述共享目录中文件、子目录的属主、权限信息和在NFS服务器端上查看到的信息一样吗？无论是否一致，请给出你查到的资料是如何讲解NFS目录中的属主和属主组信息应该如何正确解读
 
@@ -270,7 +270,7 @@
 
 + isc-dhcp-server failed!原因未知
 
-![](images\dhcp_failed.PNG)
+![](images/dhcp_failed.PNG)
 
 ## DNS
 
@@ -288,11 +288,11 @@
 
   + 匿名用户共享目录
 
-    ![](\images\samba_windows_anon.PNG)
+    ![](images/samba_windows_anon.PNG)
 
   + 账号密码方式登录
 
-    ![](images\samba_windows_usernmae.PNG)
+    ![](images/samba_windows_usernmae.PNG)
 
 + linux端：运行脚本
 
