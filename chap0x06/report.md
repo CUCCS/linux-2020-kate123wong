@@ -54,9 +54,6 @@
   sudo systemctl restart ssh
   ```
 
-### 配置文件
-
-+ [sshd_config]()
 
 ### 实验结果
 
@@ -154,25 +151,25 @@
 
   + 支持用户名密码方式登录
 
-    ![](images\vsftpd_have_pawd_login.PNG)
+    ![](images/vsftpd_have_pawd_login.PNG)
 
   + 该账号继承匿名访问者对一个目录及其子目录的只读访问权。
 
     该账户对host_only文件架有下载权限，无上传的权限
 
-    ![](images\vsftpd_have_pawd_only_read.PNG)
+    ![](images/vsftpd_have_pawd_only_read.PNG)
 
   + katy账号具有对files文件夹及其子文件夹的完整读写权限
 
-    ![](images\vsftpd_have_pawd_files.PNG)
+    ![](images/vsftpd_have_pawd_files.PNG)
 
 + FTP用户不能越权访问指定目录之外的任意其他目录和文件
 
-  ![](images\vsftpd_filed_change_path.PNG)
+  ![](images/vsftpd_filed_change_path.PNG)
 
 + 匿名访问权限仅限白名单IP来源用户访问，禁止白名单IP以外的访问   
 
-  ![](images\vsftpd_filed_login.PNG)
+  ![](images/vsftpd_filed_login.PNG)
 
 ## NFS
 
