@@ -124,7 +124,7 @@
 
   使用域名登录成功截图：
 
-  ![](image\verynginx_loginin.PNG)
+  ![](image/verynginx_loginin.PNG)
 
 
 
@@ -143,7 +143,7 @@ sudo vim /etc/nginx/sites-enabled/default
 sudo systemctl start nginx
 ```
 
-![](D:\0001Study\00212_linux\chap0x05\image\nginx_open.PNG)
+![](image/nginx_open.PNG)
 
 ## 安装nginx
 
@@ -166,7 +166,7 @@ FLUSH PRIVILEGES;
 SELECT user,authentication_string,plugin,host FROM mysql.user;
 ```
 
-![](image\nginx_mysql_add_password.PNG)
+![](image/nginx_mysql_add_password.PNG)
 
 ### 安装php，并配置nginx使用php
 
@@ -197,13 +197,12 @@ sudo systemctl reload nginx
 #如果要恢复默认配置，可以通过重新创建连接来完成，并取消对nginx_php-fpm的连接
 sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 sudo unlink /etc/nginx/sites-enabled/nginx_php-fpm
-##注意：ln -s  以及 unlink  语法后一定要跟绝对路径，相对路径一般会报错 ##
 #------------------------- 补充 ---------------------------
 ```
 
-<img src="image\nginx_php_config.PNG" style="zoom: 80%;" />
+<img src="image/nginx_php_config.PNG" style="zoom: 80%;" />
 
-<img src="image\nginx_php_config_ok.PNG" style="zoom: 85%;" />
+<img src="image/nginx_php_config_ok.PNG" style="zoom: 85%;" />
 
 ##  安装wordpress
 
@@ -220,7 +219,7 @@ mysql>FLUSH PRIVILEGES;
 mysql>exit;
 ```
 
-![](image\wordpress_mysql_database_ok.PNG)
+![](image/wordpress_mysql_database_ok.PNG)
 
 ### Installing additional php extensions
 
@@ -242,7 +241,7 @@ sudo ln -s /etc/nginx/sites-available/wordpress /etc/nginx/sites-enabled/
 sudo nginx -t (检查结果：ok)
 ```
 
-<img src="image\wordpress_fig.PNG" style="zoom:80%;" />
+<img src="image/wordpress_fig.PNG" style="zoom:80%;" />
 
 ### Downloading WordPress
 
@@ -267,7 +266,7 @@ sudo chown -R www-data:www-data /var/www/html/wp.sec.cuc.edu.cn/
 # database host : 127.0.0.1
 ```
 
-<img src="image\wordpress_open_ok.PNG" style="zoom:75%;" />
+<img src="image/wordpress_open_ok.PNG" style="zoom:75%;" />
 
 ## DVWA
 
@@ -313,13 +312,13 @@ sudo nginx -t (检查结果：ok)
 sudo systemctl restart nginx
 ```
 
-<img src="image\dvwa_fig.PNG" style="zoom:95%;" />
+<img src="image/dvwa_fig.PNG" style="zoom:95%;" />
 
 ### web访问
 
 使用`192.169.1.250:20004/setup.php`访问
 
-<img src="image\dvwa_open.PNG" style="zoom:75%;" />
+<img src="image/dvwa_open.PNG" style="zoom:75%;" />
 
 ###  login in
 
@@ -329,7 +328,7 @@ sudo systemctl restart nginx
 
 登录成功界面如图:
 
-<img src="image\dvwa_open_login.PNG" style="zoom:75%;" />
+<img src="image/dvwa_open_login.PNG" style="zoom:75%;" />
 
 ## 实验检查点
 
@@ -345,11 +344,11 @@ sudo systemctl restart nginx
     
       + 配置matcher
     
-        <img src="image\verynginx_daili.cogfig.PNG" style="zoom:75%;" />
+        <img src="image/verynginx_daili.cogfig.PNG" style="zoom:75%;" />
     
       + 配置upstream和proxy
     
-        <img src="image\verynginx_daili.cogfig_upstream.PNG" style="zoom:75%;" />
+        <img src="image/verynginx_daili.cogfig_upstream.PNG" style="zoom:75%;" />
     
         
   
@@ -360,7 +359,7 @@ sudo systemctl restart nginx
   + [nginx配置文件](image\nginx_wordpress_dvwa_config.PNG)
   + wordpress和dvwa搭建站点访问情况：
 
-  <img src="image\nginx_wordpress_dvwa_opne_login.PNG" style="zoom:75%;" />
+  <img src="image/nginx_wordpress_dvwa_opne_login.PNG" style="zoom:75%;" />
 
 ### 安全加固要求
 
@@ -368,33 +367,33 @@ sudo systemctl restart nginx
 
   - 添加mater
 
-    ![](D:\0001Study\00212_linux\linux-2020-kate123wong\chap0x05\image\safe_ip_gegex.PNG)
+    ![](image/safe_ip_gegex.PNG)
 
-  - 添加response![](image\safe_ip_refuse.PNG)
+  - 添加response![](image/safe_ip_refuse.PNG)
 
   - 添加filter
 
-    ![](image\safe_ip_filter.PNG)
+    ![](image/safe_ip_filter.PNG)
 
   - 结果（本地虚拟机出现故障（重装仍有问题），故后续操作是将远程他人主机后进行的操作，所以host-only的ip地址有所变化，但端口配置信息不变，不过，因为前面全都重新操作的缘故，导致剩余时间太少，部分实验没有成功）。
 
-    ![](image\yuancheng_wordpress_ip_failed.PNG)
+    ![](image/yuancheng_wordpress_ip_failed.PNG)
 
-    ![](image\yuancheng_dvwa_ip_failed.PNG)
+    ![](image/yuancheng_dvwa_ip_failed.PNG)
 
 - [Damn Vulnerable Web Application (DVWA)](http://www.dvwa.co.uk/)只允许白名单上的访客来源IP，其他来源的IP访问均向访客展示自定义的**友好错误提示信息页面-2**
 
   - 添加matcher
 
-    ![dv_ip](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/dv_ip.PNG)
+    ![dv_ip](image/dv_ip.PNG)
 
   - 添加自定义response
 
-    ![dvwa_res](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/dvwa_res.PNG)
+    ![dvwa_res](image/dvwa_res.PNG)
 
   - 添加filter
 
-    ![dv_filter](image\dv_filter.PNG)
+    ![dv_filter](image/dv_filter.PNG)
 
   - 结果：失败
 
@@ -402,11 +401,11 @@ sudo systemctl restart nginx
 
   + 添加matcher
 
-    ![wp_mat](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/wp_mat.PNG)
+    ![wp_mat](image/wp_mat.PNG)
 
   + 添加filter
 
-    ![wp_filter](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/wp_filter.PNG)
+    ![wp_filter](image/wp_filter.PNG)
 
   + 结果：失败
 
@@ -414,15 +413,15 @@ sudo systemctl restart nginx
 
   + 添加matcher
 
-    ![sql_matcher](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/sql_matcher.PNG)
+    ![sql_matcher](image/sql_matcher.PNG)
 
   + 添加自定义response
 
-    ![sql_response](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/sql_response.PNG)
+    ![sql_response](image/sql_response.PNG)
 
   + 添加filter
 
-    ![sql_filter](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/sql_filter.PNG)
+    ![sql_filter](image/sql_filter.PNG)
 
   + 结果：失败
 
@@ -432,15 +431,15 @@ sudo systemctl restart nginx
 
   - 添加matcher
 
-    ![vn_white](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/vn_white.PNG)
+    ![vn_white](image/vn_white.PNG)
 
   - 添加自定义response
 
-    ![vn_res](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/vn_res.PNG)
+    ![vn_res](image/vn_res.PNG)
 
   - 添加filter
 
-    ![vn_filter](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/vn_filter.PNG)
+    ![vn_filter](image/vn_filter.PNG)
 
   - 结果：失败
 
@@ -460,11 +459,11 @@ sudo systemctl restart nginx
 
     - 添加自定义response
 
-      ![speed_resp](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/speed_resp.PNG)
+      ![speed_resp](image/speed_resp.PNG)
 
     + 添加频率限制
 
-    ![speed](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/speed.PNG)
+    ![speed](image/speed.PNG)
 
     - 结果
 
@@ -473,11 +472,11 @@ sudo systemctl restart nginx
 
       - 添加matcher
 
-        ![curl_mat](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/curl_mat.PNG)
+        ![curl_mat](image/curl_mat.PNG)
 
       - 添加filter
 
-        ![curl_filter](D:/0001Study/00212_linux/linux-2019-jackcily/job5/img/curl_filter.PNG)
+        ![curl_filter](image/curl_filter.PNG)
 
     
 
@@ -487,7 +486,7 @@ sudo systemctl restart nginx
 
   + 尝试解决方法1：采用桥接网卡代替host-only+Nat，但要将桥接网卡的ip设置成静态分配的，以便主机每次都通过同一ip访问客机。
 
-    >#-----------------------------------------------------  补充知识 -------------------------------------------------------------
+    > # -----------------------------------------------------  补充知识 -------------------------------------------------------------
     >
     >| 如何访问     | host-only网卡 | Nat    | 桥接 |
     >| ------------ | ------------- | ------ | ---- |
@@ -498,11 +497,11 @@ sudo systemctl restart nginx
     >
     >该实验中，host-only作用是允许主机通过web访问客机的verynhinx服务，Nat网卡的作用是用来上网，即客机访问公网。桥接模式下，这两种功能都可以实现，故在无法配置host-only网卡的情况下，采用桥接模式作为替用方案。
     >
-    >----------------------------------------------------------   补充知识     ----------------------------------------------------#
+    >----------------------------------------------------------   补充知识     ---------------------------------------------------- 
 
     + 改变桥接网卡的ip为静态。
 
-      <img src="image\verynginx_netplan.PNG" style="zoom:75%;" />
+      <img src="image/verynginx_netplan.PNG" style="zoom:75%;" />
 
     + 该做法可以解决部分问题，但由于本实验要求配置反向代理服务器，并配置ip访问时不能直接访问。桥接模式下，主客机在同一局域网中，反向代理不生效，仍能通过ip访问。故此做法在反向代理的配置上不可行。
 
@@ -522,6 +521,3 @@ sudo systemctl restart nginx
 + [ https://www.virtualbox.org]( https://www.virtualbox.org/manual/ch08.html#vboxmanage-modifyvm )
 + [VirtualBox不同网卡的上网规则](blog.csdn.net/nsxqf/article/details/83543563)
 + [如何将桥接模式的ip配置为静态ip]( https://www.cnblogs.com/GHzcx/p/9641234.html )
-
-
-
