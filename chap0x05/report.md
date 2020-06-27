@@ -413,15 +413,9 @@ sudo systemctl restart nginx
 
   + 添加matcher
 
-    ![sql_matcher](image/sql_matcher.PNG)
-
   + 添加自定义response
 
-    ![sql_response](image/sql_response.PNG)
-
   + 添加filter
-
-    ![sql_filter](image/sql_filter.PNG)
 
   + 结果：失败
 
@@ -431,17 +425,12 @@ sudo systemctl restart nginx
 
   - 添加matcher
 
-    ![vn_white](image/vn_white.PNG)
-
   - 添加自定义response
-
-    ![vn_res](image/vn_res.PNG)
 
   - 添加filter
 
-    ![vn_filter](image/vn_filter.PNG)
-
   - 结果：失败
+
 
 + 通过定制
 
@@ -467,16 +456,11 @@ sudo systemctl restart nginx
 
     - 结果
 
-
     - 禁止curl访问
 
       - 添加matcher
 
-        ![curl_mat](image/curl_mat.PNG)
-
       - 添加filter
-
-        ![curl_filter](image/curl_filter.PNG)
 
     
 
@@ -486,7 +470,7 @@ sudo systemctl restart nginx
 
   + 尝试解决方法1：采用桥接网卡代替host-only+Nat，但要将桥接网卡的ip设置成静态分配的，以便主机每次都通过同一ip访问客机。
 
-    > # -----------------------------------------------------  补充知识 -------------------------------------------------------------
+    >  -----------------------------------------------------  补充知识 ---------------------------------------
     >
     >| 如何访问     | host-only网卡 | Nat    | 桥接 |
     >| ------------ | ------------- | ------ | ---- |
@@ -497,7 +481,7 @@ sudo systemctl restart nginx
     >
     >该实验中，host-only作用是允许主机通过web访问客机的verynhinx服务，Nat网卡的作用是用来上网，即客机访问公网。桥接模式下，这两种功能都可以实现，故在无法配置host-only网卡的情况下，采用桥接模式作为替用方案。
     >
-    >----------------------------------------------------------   补充知识     ---------------------------------------------------- 
+    > ----------------------------------------------------------   补充知识     ---------------------------------------------------- 
 
     + 改变桥接网卡的ip为静态。
 
