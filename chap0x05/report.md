@@ -389,8 +389,6 @@ sudo systemctl restart nginx
 
   - 添加自定义response
 
-    ![dvwa_res](image/dvwa_res.PNG)
-
   - 添加filter
 
     ![dv_filter](image/dv_filter.PNG)
